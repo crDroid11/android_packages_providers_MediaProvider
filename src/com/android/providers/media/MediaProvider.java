@@ -6381,6 +6381,7 @@ public class MediaProvider extends ContentProvider {
      * (such as Android/data/com.foo or Android/obb/com.foo) that does not belong to the caller.
      */
     private boolean isPrivatePackagePathNotOwnedByCaller(String path) {
+        path = FileUtils.normalizeAndFilterDefaultIgnorableCodepoints(path);
         // Files under the apps own private directory
         final String appSpecificDir = extractPathOwnerPackageName(path);
 
